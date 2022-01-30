@@ -12,8 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. */
 
-import java.net.URI
-
 plugins {
   java
   `java-library`
@@ -47,7 +45,7 @@ java {
 
 repositories {
   mavenCentral()
-  maven { url = URI.create("https://oss.sonatype.org/content/repositories/snapshots") }
+  maven { url = uri("https://oss.sonatype.org/content/repositories/snapshots") }
 }
 
 dependencies { implementation("org.ow2.asm", "asm", asm_version) }
@@ -75,11 +73,10 @@ tasks {
     options.isDeprecation = true
     options.isWarnings = true
   }
-  val sourcesJar =
-    register<Jar>("sourcesJar") {
-      dependsOn("classes")
-      archiveClassifier.set("sources")
-      from(sourceSets.main.get().allSource)
-    }
+  register<Jar>("sourcesJar") {
+    group = "build"
+    archiveClassifier.set("sources")
+    from(sourceSets.main.get().allSource)
+  }
   withType<Jar> { from("LICENSE") }
 }
