@@ -38,9 +38,11 @@ version =
   }
 
 java {
-  sourceCompatibility = JavaVersion.VERSION_16
-  targetCompatibility = JavaVersion.VERSION_16
+  sourceCompatibility = JavaVersion.VERSION_17
+  targetCompatibility = JavaVersion.VERSION_17
   modularity.inferModulePath.set(true)
+  withSourcesJar()
+  withJavadocJar()
 }
 
 repositories {
@@ -72,11 +74,6 @@ tasks {
     options.encoding = "UTF-8"
     options.isDeprecation = true
     options.isWarnings = true
-  }
-  register<Jar>("sourcesJar") {
-    group = "build"
-    archiveClassifier.set("sources")
-    from(sourceSets.main.get().allSource)
   }
   withType<Jar> { from("LICENSE") }
 }

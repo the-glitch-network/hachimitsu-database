@@ -5,8 +5,9 @@
  * @since ${version}
  **/
 module net.kjp12.database {
-    requires java.sql;
-    requires org.objectweb.asm;
-    exports net.kjp12.hachimitsu.database.api;
-    exports net.kjp12.hachimitsu.database.api.annotation;
+	requires java.sql;
+	requires org.objectweb.asm;
+
+	exports net.kjp12.hachimitsu.database.api;
+	exports net.kjp12.hachimitsu.database.api.annotation;
 }
